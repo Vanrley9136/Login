@@ -9,7 +9,7 @@
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <style>
+  <style>
         :root {
             /* Definindo as cores principais da interface */
             --primary-color: #2d75c9;
@@ -47,7 +47,8 @@
 
         /* Container principal do login */
         .login-container {
-            width: 450px;
+            width: 90%;
+            max-width: 450px;
             background-color: var(--form-background);
             display: flex;
             flex-direction: column;
@@ -161,11 +162,12 @@
         /* Estilo do footer */
         footer {
             background-color: var(--footer-background);
-            padding: 20px;
+            padding: 10px;
             text-align: center;
             width: 100%;
             position: fixed;
             bottom: 0;
+            font-size: 12px;
         }
 
         /* Texto do footer */
@@ -239,6 +241,11 @@
                 width: 40px;
                 height: 40px;
             }
+
+            footer {
+                padding: 8px;
+                font-size: 12px;
+            }
         }
     </style>
 </head>
@@ -303,21 +310,25 @@
             const largeImage = document.querySelector('.corner-image-large');
             const smallImage = document.querySelector('.corner-image-small');
 
-            largeImage.animate([
-                { transform: 'translate(-30px, -30px) scale(0.8)', opacity: 0 },
-                { transform: 'translate(-30px, -30px) scale(1)', opacity: 1 }
-            ], {
-                duration: 1000,
-                fill: 'forwards'
-            });
+            if (largeImage) {
+                largeImage.animate([
+                    { transform: 'translate(-30px, -30px) scale(0.8)', opacity: 0 },
+                    { transform: 'translate(-30px, -30px) scale(1)', opacity: 1 }
+                ], {
+                    duration: 1000,
+                    fill: 'forwards'
+                });
+            }
 
-            smallImage.animate([
-                { transform: 'translate(30px, 30px) scale(0.8)', opacity: 0 },
-                { transform: 'translate(30px, 30px) scale(1)', opacity: 1 }
-            ], {
-                duration: 1000,
-                fill: 'forwards'
-            });
+            if (smallImage) {
+                smallImage.animate([
+                    { transform: 'translate(30px, 30px) scale(0.8)', opacity: 0 },
+                    { transform: 'translate(30px, 30px) scale(1)', opacity: 1 }
+                ], {
+                    duration: 1000,
+                    fill: 'forwards'
+                });
+            }
         })();
     </script>
 </body>
