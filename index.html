@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        :root {
+            /* Definindo as cores principais da interface */
+            --primary-color: #2d75c9;
+            --secondary-color: #5A5A5A;
+            --background-color: #F3F4F6;
+            --form-background: rgba(255, 255, 255, 0.9);
+            --text-color: #333;
+            --input-border-color: #DDD;
+            --button-background: linear-gradient(90deg, #4A90E2 0%, #0070C9 100%);
+            --button-hover-background: linear-gradient(90deg, #3A7DD1 0%, #005FAB 100%);
+            --footer-background: #E9F4FB;
+            --company-background: #0070C9;
+        }
+
+        /* Resetando e aplicando a fonte padrão */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Estilo para o corpo da página */
+        body {
+            background: url('https://wallpaperbat.com/img/433592-digital-minimalism-how-to-simplify-your-online-life.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            opacity: 0;
+            animation: fadeIn 1s forwards ease-out; /* Aplicando a animação de fade-in ao abrir */
+        }
+
+        /* Container principal do login */
+        .login-container {
+            width: 450px;
+            background-color: var(--form-background);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 20px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 50px;
+            position: relative;
+        }
+
+        /* Div do nome da empresa */
+        .company-name {
+            background-color: var(--company-background);
+            color: #fff;
+            padding: 15px;
+            width: 100%;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            border-radius: 15px 15px 0 0; /* Borda arredondada na parte superior */
+            margin-bottom: 20px;
+        }
+
+        /* Estilo para o formulário de login */
+        .login-form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* Título do formulário */
+        .login-form h2 {
+            color: var(--primary-color);
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        /* Grupo de entrada de dados */
+        .input-group {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        /* Estilo dos campos de entrada */
+        .input-group input {
+            width: 100%;
+            padding: 20px 60px 20px 20px;
+            border-radius: 10px;
+            border: 1px solid var(--input-border-color);
+            font-size: 18px;
+            color: var(--text-color);
+            background-color: #FFF;
+            outline: none;
+        }
+
+        /* Ícones nos campos de entrada */
+        .input-group i {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--secondary-color);
+        }
+
+        /* Ícones de exibir/ocultar senha */
+        .input-group i.fa-eye,
+        .input-group i.fa-eye-slash {
+            cursor: pointer;
+        }
+
+        /* Estilo do botão de login */
+        button {
+            width: 100%;
+            padding: 20px;
+            border-radius: 10px;
+            border: none;
+            background: var(--button-background);
+            color: #FFF;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 20px;
+        }
+
+        /* Efeito hover no botão */
+        button:hover {
+            background: var(--button-hover-background);
+        }
+
+        /* Link de esquecimento de senha */
+        .forgot-password {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        /* Estilo do link de esquecimento de senha */
+        .forgot-password a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        /* Efeito hover no link de esquecimento de senha */
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        /* Estilo do footer */
+        footer {
+            background-color: var(--footer-background);
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+
+        /* Texto do footer */
+        footer p {
+            color: var(--text-color);
+            font-size: 14px;
+        }
+
+        /* Estilos para imagens simulando dinheiro */
+        .corner-image-large {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+        }
+
+        .corner-image-small {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+        }
+
+        .top-left {
+            top: -30px;
+            left: -30px;
+        }
+
+        .bottom-right {
+            bottom: -30px;
+            right: -30px;
+        }
+
+        /* Animação de fade-in */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsividade para dispositivos móveis */
+        @media (max-width: 480px) {
+            .login-container {
+                width: 90%;
+                padding: 30px;
+            }
+
+            .company-name {
+                font-size: 20px;
+                padding: 10px;
+            }
+
+            .login-form h2 {
+                font-size: 28px;
+            }
+
+            .input-group input {
+                padding: 15px 50px 15px 15px;
+                font-size: 16px;
+            }
+
+            button {
+                font-size: 18px;
+                padding: 16px;
+            }
+
+            .corner-image-large {
+                width: 80px;
+                height: 80px;
+            }
+
+            .corner-image-small {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Container principal do login -->
+    <div class="login-container">
+        <!-- Div com o nome da empresa -->
+        <div class="company-name">
+            MinhaEmpresa
+        </div>
+
+        <!-- Imagem maior no canto superior esquerdo -->
+        <img src="https://cdn3d.iconscout.com/3d/premium/thumb/money-5825135-4874117.png" alt="Dinheiro" class="corner-image-large top-left">
+        
+        <!-- Seção do formulário de login -->
+        <div class="login-form">
+            <h2>Entrar</h2>
+            <form action="#">
+                <!-- Campo de e-mail com ícone -->
+                <div class="input-group">
+                    <input type="email" placeholder="Seu e-mail" required>
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <!-- Campo de senha com ícone e toggle para exibir/ocultar -->
+                <div class="input-group">
+                    <input type="password" id="password" placeholder="Sua senha" required>
+                    <i class="fas fa-eye" id="togglePassword"></i>
+                </div>
+                <!-- Botão de login -->
+                <button type="submit">Entrar</button>
+                <!-- Link para recuperação de senha -->
+                <div class="forgot-password">
+                    <a href="#">Esqueceu a senha?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 MinhaEmpresa. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Script para exibir/ocultar senha -->
+    <script>
+        (function() {
+            // Selecionando o ícone de toggle e o campo de senha
+            const togglePassword = document.querySelector('#togglePassword');
+            const password = document.querySelector('#password');
+
+            // Adicionando um listener de clique ao ícone para alternar entre exibir e ocultar a senha
+            togglePassword.addEventListener('click', function () {
+                // Alternando o tipo de input entre 'password' e 'text'
+                const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                password.setAttribute('type', type);
+
+                // Alternando o ícone de olho aberto para fechado
+                this.classList.toggle('fa-eye-slash');
+            });
+
+            // Animação de fade-in para imagens grandes e pequenas
+            const largeImage = document.querySelector('.corner-image-large');
+            const smallImage = document.querySelector('.corner-image-small');
+
+            largeImage.animate([
+                { transform: 'translate(-30px, -30px) scale(0.8)', opacity: 0 },
+                { transform: 'translate(-30px, -30px) scale(1)', opacity: 1 }
+            ], {
+                duration: 1000,
+                fill: 'forwards'
+            });
+
+            smallImage.animate([
+                { transform: 'translate(30px, 30px) scale(0.8)', opacity: 0 },
+                { transform: 'translate(30px, 30px) scale(1)', opacity: 1 }
+            ], {
+                duration: 1000,
+                fill: 'forwards'
+            });
+        })();
+    </script>
+</body>
+</html>
